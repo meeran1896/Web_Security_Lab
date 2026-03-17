@@ -137,7 +137,7 @@ def login():
         if request.method == 'POST':
             c = g.db.cursor()
             username = request.form['username']
-            password = hash(request.form['password'])
+            password = hash_pass(request.form['password'])
             c.execute("SELECT * FROM users WHERE username='%s' AND password='%s'" %
                   (username, password))
             rval=c.fetchone()
